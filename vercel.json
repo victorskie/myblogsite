@@ -1,17 +1,18 @@
 {
-  "build": {
-    "env": {
-      "PYTHON_VERSION": "3.12"
-    }
-  },
-  "routes": [
+  "version": 2,
+  "builds": [
     {
-      "src": "/static/(.*)",
-      "dest": "/staticfiles/$1"
+      "src": "blogsite/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb" }
     },
     {
-      "src": "/(.*)",
-      "dest": "blogsite/wsgi.py"
+      "src": "build_files.sh",
+      "use": "@vercel/static-build"
     }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
+    { "src": "/(.*)", "dest": "blogsite/wsgi.py" }
   ]
 }
