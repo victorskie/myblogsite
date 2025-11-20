@@ -6,4 +6,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blogsite.settings')
 
 application = get_wsgi_application()
 
-app = application  # For Vercel
+
+app = application  
