@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Titles - Blogsite</title>
+</head>
+<body>
+    <h1>Blog Titles</h1>
+    {% if blog_posts %}
+        <ul>
+            {% for post in blog_posts %}
+                <li>
+                    <a href="{% url 'blog_description' post.id %}">{{ post.title }}</a>
+                    <a href="{% url 'delete_blog' post.id  %}" >Delete student</a>
+                    <a href="{% url 'edit' post.id %}" >edit info</a>
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No blog posts available yet.</p>
+    {% endif %}
+
+    <a href="{% url 'home'  %}" >Go back to home page</a>
+
+</body>
+</html>
